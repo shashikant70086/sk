@@ -1,8 +1,10 @@
 {
   "dependencies": {
     "@headlessui/react": "^2.2.2",
+    "@radix-ui/react-dialog": "^1.1.11",
     "@tanstack/react-query": "^5.74.4",
     "axios": "^1.9.0",
+    "lucide-react": "^0.503.0",
     "react-router-dom": "^7.5.2"
   }
 }

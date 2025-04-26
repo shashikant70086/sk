@@ -1,88 +1,85 @@
+
 import React, { useState } from 'react';
-import ProductCard from '../components/ProductCard';
-import ChatArea from '../components/ChatArea';
-import ModeDropdown from '../components/ModeDropdown';
-import LoginWithGoogle from '../components/LoginWithGoogle';
-import TopBar from '../components/TopBar';
-import PromptInput from '../components/PromptInput';
+import { Button } from '../components/ui/Button';
+import { FaGoogle } from 'react-icons/fa';
+import ChatInterface from '../components/ChatArea';
 
-const HomePage = () => {
-  const [messages, setMessages] = useState([
-    { role: 'bot', content: 'How can I assist you today?' },
-  ]);
+const sampleProducts = [
+  {
+    id: "1",
+    name: "Smartwatch",
+    price: 199.99,
+    image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=200&h=200"
+  },
+  {
+    id: "2",
+    name: "Headphones",
+    price: 149.99,
+    image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=200&h=200"
+  },
+  {
+    id: "3",
+    name: "Smart Speaker",
+    price: 99.99,
+    image: "https://images.unsplash.com/photo-1589003077984-894e133dabab?auto=format&fit=crop&w=200&h=200"
+  }
+];
 
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: 'Smartwatch',
-      price: 199.99,
-      description: 'A sleek and modern smartwatch.',
-      image: '/Smartwatch.jpg',
-    },
-    {
-      id: 2,
-      name: 'Headphones',
-      price: 149.99,
-      description: 'High-quality noise-cancelling headphones.',
-      image: '/Headphones.jpg',
-    },
-    {
-      id: 3,
-      name: 'Smart Speaker',
-      price: 99.99,
-      description: 'A smart speaker with voice assistant.',
-      image: '/SmartSpeaker.jpg',
-    },
-  ]);
-
-  const handleAddToCart = (product) => {
-    console.log('Added to cart:', product);
-  };
-    const handleSendMessage = (newMessage) => {
-        setMessages([...messages, { role: 'user', content: newMessage }]);
-    };
-
-    const handleSendPrompt = (prompt) => {
-        if (prompt.trim() !== "") {
-          handleSendMessage(prompt);
-        }
-      };
+export default function HomePage() {
+  const [mode, setMode] = useState("full-ai");
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col">      
-      <TopBar className="bg-blue-900" />
-      <div className="flex flex-1">
-        {/* Product List (Left Side) */}
-        <div className="w-1/2 p-6">
-          <h2 className="text-2xl font-bold mb-4">
-            AI-Powered Adaptive Shopping Agent
-          </h2>
-          <ModeDropdown value="Full AI Purchase" />
-          <div className="mt-6 space-y-4">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onAddToCart={handleAddToCart}
-              />
+    <div className="container mx-auto px-4 py-8">
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Left Column: Title, Mode, Products */}
+        <div className="space-y-8 animate-fade-in">
+          {/* Hero Section */}
+          <div className="space-y-2">
+            <h1 className="text-4xl font-light leading-tight">
+              AI-Powered<br />
+              <span className="font-semibold">Adaptive Shopping</span><br />
+              Agent
+            </h1>
+          </div>
+          
+          {/* Mode Selector */}
+          <select 
+            value={mode} 
+            onChange={(e) => setMode(e.target.value)}
+            className="w-full p-2 border rounded"
+          >
+            <option value="full-ai">Full AI Mode</option>
+            <option value="assisted">Assisted Mode</option>
+          </select>
+          
+          {/* Products Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {sampleProducts.map(product => (
+              <div key={product.id} className="border rounded-lg p-4">
+                <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded"/>
+                <h3 className="mt-2 font-semibold">{product.name}</h3>
+                <p className="text-gray-600">${product.price}</p>
+              </div>
             ))}
           </div>
-          <div className="mt-8">
-            <LoginWithGoogle />
+          
+          {/* Login Button */}
+          <div className="flex justify-center pt-2">
+            <Button 
+              variant="outline" 
+              className="bg-card hover:bg-card/90 text-foreground font-medium py-6 px-6 rounded-lg border border-border transition-colors flex items-center"
+            >
+              <FaGoogle className="mr-2" />
+              Login with Google
+            </Button>
           </div>
         </div>
-        {/* Chat Area (Right Side) */}
-        <div className="w-1/2 p-6 flex flex-col justify-between">
-          <div className="flex-1">
-            <ChatArea messages={messages} />
-          </div>
-          <div className="mt-4">
-            <PromptInput handleSubmit={handleSendPrompt} />
-          </div>
+        
+        {/* Right Column: Chat Interface */}
+        <div className="h-full">
+          <ChatInterface />
         </div>
       </div>
     </div>
   );
-};
-
-export default HomePage;
+}

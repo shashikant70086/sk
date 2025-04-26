@@ -14,15 +14,16 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(to bottom, #1e272e, #0a0d14); /* Dark gradient background */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #ffffff; /* White text color */
 }
+
 
 .App-link {
   color: #61dafb;

@@ -1,33 +1,16 @@
-import React, { forwardRef } from 'react';
-import { cva } from 'class-variance-authority';
+import React from 'react';
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
 
-const separatorVariants = cva(
-  "shrink-0 bg-border",
-  {
-    variants: {
-      orientation: {
-        horizontal: "h-[1px] w-full",
-        vertical: "h-full w-[1px]",
-      },
-    },
-    defaultVariants: {
-      orientation: "horizontal",
-    },
-  }
-);
+const Separator = React.forwardRef(({ className = '', orientation = "horizontal", decorative = true, ...props }, ref) => (
+  <SeparatorPrimitive.Root
+    ref={ref}
+    decorative={decorative}
+    orientation={orientation}
+    className={`shrink-0 bg-border ${orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]"} ${className}`}
+    {...props}
+  />
+));
 
-const Separator = forwardRef(({ className, orientation, decorative = true, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      role={decorative ? undefined : "separator"}
-      aria-orientation={decorative ? undefined : orientation}
-      className={separatorVariants({ orientation, className })}
-      {...props}
-    />
-  );
-});
-
-Separator.displayName = "Separator";
+Separator.displayName = SeparatorPrimitive.Root.displayName;
 
 export { Separator };

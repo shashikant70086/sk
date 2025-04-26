@@ -2,3 +2,23 @@ modules = ["nodejs-20", "java-graalvm22.3", "web", "nix"]
 
 [nix]
 channel = "stable-24_05"
+
+[workflows]
+runButton = "Dev"
+
+[[workflows.workflow]]
+name = "Dev"
+author = 41983531
+mode = "parallel"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd backend && ./mvnw spring-boot:run"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd frontend/shopping-ui && npm install && npm start"
+
+[deployment]
+run = ["sh", "-c", "cd backend && ./mvnw spring-boot:run"]
+build = ["sh", "-c", "cd frontend/shopping-ui && npm install && npm run build"]

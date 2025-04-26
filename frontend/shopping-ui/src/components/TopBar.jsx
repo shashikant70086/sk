@@ -1,4 +1,3 @@
-jsx
 import React from 'react';
 import { FaSignOutAlt, FaHistory } from 'react-icons/fa';
 

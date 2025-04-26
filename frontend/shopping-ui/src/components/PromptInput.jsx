@@ -1,4 +1,3 @@
-jsx
 import React from 'react';
 import { PiPaperPlaneRightFill } from 'react-icons/pi';
 

@@ -1,11 +1,10 @@
-jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaPlusCircle, FaSignOutAlt } from 'react-icons/fa';
 import { PiPaperPlaneRightFill } from "react-icons/pi";
 import avatar from "../Pooho.png";
-import "components/styles.css";
-import Message from 'components/Message';
+import "../stars.css";
+import Message from '../components/Message';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';

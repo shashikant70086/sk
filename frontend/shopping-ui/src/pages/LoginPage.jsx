@@ -1,12 +1,10 @@
-jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import LoginForm from 'components/LoginForm';
-import RegisterForm from 'components/RegisterForm';
-import { ReactComponent as ShoppingCart } from 'components/shopping-cart.svg';
+import LoginForm from '../components/LoginForm';
+import RegisterForm from '../components/RegisterForm';
 
 function LoginPage() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -72,7 +70,7 @@ function LoginPage() {
           <div className="card bg-gray-800/50 backdrop-blur-md p-8 rounded-xl shadow-lg max-w-md w-full text-center">
             {/* Shopping Cart Logo */}
             <div className="w-24 h-24 mx-auto mb-6">
-              <ShoppingCart className="text-white w-full h-full" />
+              <img src={require('../logo.svg').default} className="text-white w-full h-full" alt="Logo" />
             </div>
 
             {/* Title and Subtitle */}

@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 3.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    
+    --primary: 207 90% 54%;
+    --primary-foreground: 211 100% 99%;
+    
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 3.9%;
+    
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 35%;
+    
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 10% 3.9%;
+    
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 240 6% 70%;
+    
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 215 30% 10%;
+    --foreground: 0 0% 98%;
+    
+    --card: 215 28% 17%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 215 28% 17%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 207 90% 54%;
+    --primary-foreground: 211 100% 99%;
+    
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 215 25% 27%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    --accent: 215 25% 27%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 215 28% 17%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+  
+  html, body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  #root {
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+@layer components {
+  .product-card {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .product-card:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+  
+  .message-bubble {
+    @apply max-w-[85%] rounded-[18px];
+  }
+  
+  .assistant-message {
+    @apply rounded-bl-[5px];
+  }
+  
+  .user-message {
+    @apply rounded-br-[5px];
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease forwards;
+  }
+}

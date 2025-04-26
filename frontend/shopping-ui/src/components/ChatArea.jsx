@@ -1,6 +1,5 @@
-jsx
 import React, { useEffect, useRef } from 'react';
-import Message from 'components/Message';
+import Message from '../components/Message';
 
 function ChatArea({ messages }) {
   const messagesEndRef = useRef(null);

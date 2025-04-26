@@ -22,3 +22,7 @@ args = "cd frontend/shopping-ui && npm install && npm start"
 [deployment]
 run = ["sh", "-c", "cd backend && ./mvnw spring-boot:run"]
 build = ["sh", "-c", "cd frontend/shopping-ui && npm install && npm run build"]
+
+[[ports]]
+localPort = 3000
+externalPort = 80
